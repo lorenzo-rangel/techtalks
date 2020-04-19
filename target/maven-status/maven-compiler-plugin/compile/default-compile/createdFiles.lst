@@ -1,0 +1,8 @@
+com\globant\microservices\sample\controller\UsersController.class
+com\globant\microservices\sample\services\IUserService.class
+com\globant\microservices\sample\model\User.class
+com\globant\microservices\sample\repository\UserRepository.class
+com\globant\microservices\sample\application\SpringFoxConfig.class
+com\globant\microservices\sample\services\UserService.class
+com\globant\microservices\sample\application\SwaggerConfigProperties.class
+com\globant\microservices\sample\MicroservicesSampleApplication.class
