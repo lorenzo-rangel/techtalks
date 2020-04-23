@@ -10,6 +10,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @Api(tags = "User methods")
+@CrossOrigin(origins = "*", allowedHeaders = "*")
 public class UsersController {
 
   @Autowired
@@ -41,21 +43,30 @@ public class UsersController {
 	  return userService.getAllUsers();
   }
   
-  @GetMapping("/user/{id}")
-  public ResponseEntity<User> findUser(@PathVariable String id) {
-
-    return ResponseEntity.of(userRepository.findById(id));
+  @GetMapping("/finduserbyid/{id}")
+  public ResponseEntity<User> findUserById(@PathVariable String id) {
+	  System.out.println(id);
+	  return ResponseEntity.of(userService.findUserById(id));
   }
   
   @GetMapping("/user/login/{username}/{password}")
   public String login(@PathVariable String username, @PathVariable String password) {
-	  System.out.println( userService.getUserLegalId(username, password));
-	  return userService.getUserLegalId(username, password);
+	 return userService.getUserLegalId(username, password);
+  }
+  
+  @GetMapping("/user/{username}/{password}")
+  public User findByUserNameAndPassword(@PathVariable String username, @PathVariable String password) {
+	 return userService.findByUsernameAndPassword(username, password);
+  }
+  
+  @GetMapping("/users/{legalId}")
+  public List<User> findUsersByLegalId(@PathVariable String legalId) {
+	  return userService.findUsersByLegalId(legalId);
   }
 
   @PostMapping("/user")
   public ResponseEntity<User> newUser(@RequestBody User user) {
-    User u = userRepository.save(user);
+	User u = userService.saveUser(user);
     return ResponseEntity.ok(u);
   }
 

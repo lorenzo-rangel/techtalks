@@ -1,18 +1,19 @@
 package com.globant.microservices.sample.repository;
 
-import com.globant.microservices.sample.model.User;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
-import org.springframework.stereotype.Service;
+import org.springframework.stereotype.Repository;
 
-@Service
+import com.globant.microservices.sample.model.User;
+
+@Repository
 public class UserRepository {
 
-  @SuppressWarnings({ "unchecked", "rawtypes" })
+@SuppressWarnings({ "unchecked", "rawtypes" })
 private static Map<String, User> users = new HashMap();
 
   public Optional<User> findById(String id) {
@@ -20,9 +21,6 @@ private static Map<String, User> users = new HashMap();
   }
 
   public User save(User user) {
-    if(user.getId() == null) {
-      user.setId(UUID.randomUUID().toString());
-    }
     users.put(user.getId(), user);
     return user;
   }
@@ -37,4 +35,11 @@ private static Map<String, User> users = new HashMap();
 			  .filter(user -> user.getUsername().equals(username) && user.getPassword().equals(password))
 			  .map(user -> user.getLegalId()).collect(Collectors.joining());
   }
+  
+  public List<User> getAllUsers() {
+	  return users.values().stream().collect(Collectors.toList());
+	  
+  }
+  
+  
 }

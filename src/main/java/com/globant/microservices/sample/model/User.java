@@ -1,10 +1,14 @@
 package com.globant.microservices.sample.model;
 
+import javax.persistence.*;
+
 import lombok.Data;
 
 @Data
+@Entity
 public class User {
 
+	@Id
 	String id;
   	String firstName;
   	String lastName;
@@ -14,6 +18,10 @@ public class User {
   	
   	
   
+	public User() {
+		super();
+	}
+
 	public User(String id, String firstName, String lastName, String legalId, String username, String password) {
 		super();
 		this.id = id;
