@@ -1,24 +1,21 @@
 package com.globant.microservices.sample.controller;
 
-import com.globant.microservices.sample.model.User;
-import com.globant.microservices.sample.repository.UserRepository;
-import com.globant.microservices.sample.services.IUserService;
-
-import io.swagger.annotations.Api;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import com.globant.microservices.sample.model.User;
+import com.globant.microservices.sample.services.IUserService;
+
+import io.swagger.annotations.Api;
 
 @RestController
 @Api(tags = "User methods")
@@ -26,15 +23,12 @@ import org.springframework.web.bind.annotation.RestController;
 public class UsersController {
 
   @Autowired
-  UserRepository userRepository;
-  
-  @Autowired
   IUserService userService;
   
   @RequestMapping("/greeting")
   @GetMapping
   public String greeting() {
-	  return "Hello from my users app";
+	  return userService.testGreeting();
   }
   
   @RequestMapping("/users")
@@ -70,6 +64,7 @@ public class UsersController {
     return ResponseEntity.ok(u);
   }
 
+  /*
   @PutMapping("/user/{id}")
   public ResponseEntity<User> updateUser(@RequestBody User user, @PathVariable String id) {
     User userUpdated = userRepository.findById(id).map(u -> {
@@ -89,4 +84,5 @@ public class UsersController {
   public void deleteUser(@PathVariable String id) {
     userRepository.deleteById(id);
   }
+  */
 }

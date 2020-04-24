@@ -13,7 +13,7 @@ import com.globant.microservices.sample.repository.IUserRepository;
 @Service
 public class UserService implements IUserService{
 	
-	@Autowired 
+	@Autowired
 	IUserRepository iUserRepository;
 
 	@Override
@@ -49,6 +49,11 @@ public class UserService implements IUserService{
 	@Override
 	public Optional<User> findUserById(String id) {
 		return iUserRepository.findById(id);
+	}
+
+	@Override
+	public String testGreeting() {
+		return "Greetings!";
 	}
 
 	

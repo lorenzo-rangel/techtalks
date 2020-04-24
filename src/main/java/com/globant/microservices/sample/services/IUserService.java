@@ -56,4 +56,11 @@ public interface IUserService {
 	 */
 	public  Optional<User> findUserById(String id);
 	
+	
+	/**
+	 * For testing purposes
+	 * @return String greeting
+	 */
+	public String testGreeting();
+	
 }

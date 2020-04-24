@@ -5,7 +5,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
-@ComponentScan(basePackages = "com.globant.microservices.sample")
+@ComponentScan(basePackages = {"com.globant.microservices.sample", "com.globant.microservices.sample.repository"})
 public class MicroservicesSampleApplication {
 
   public static void main(String[] args)  {
