@@ -1,6 +1,7 @@
 package com.globant.microservices.sample.controller;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -38,9 +39,8 @@ public class UsersController {
   }
   
   @GetMapping("/finduserbyid/{id}")
-  public ResponseEntity<User> findUserById(@PathVariable String id) {
-	  System.out.println(id);
-	  return ResponseEntity.of(userService.findUserById(id));
+  public Optional<User> findUserById(@PathVariable String id) {
+	  return userService.findUserById(id);
   }
   
   @GetMapping("/user/login/{username}/{password}")
@@ -63,6 +63,8 @@ public class UsersController {
 	User u = userService.saveUser(user);
     return ResponseEntity.ok(u);
   }
+  
+  
 
   /*
   @PutMapping("/user/{id}")
