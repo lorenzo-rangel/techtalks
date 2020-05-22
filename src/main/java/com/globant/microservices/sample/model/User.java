@@ -1,11 +1,13 @@
 package com.globant.microservices.sample.model;
 
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import lombok.Data;
 
 @Data
 @Entity
+@XmlRootElement
 public class User {
 
 	@Id

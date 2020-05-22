@@ -74,7 +74,7 @@ public class UserService implements IUserService{
 	 */
 	@Override
 	public String testGreeting() {
-		return "Greetings!";
+		return "Hello from my users app";
 	}
 
 	
