@@ -19,10 +19,10 @@ node {
     stage('config') {
         // Tool name from Jenkins configuration
         print 'my server configs with ssh'
-        sh "export PATH=$PATH:/var/jenkins_home/workspace/test-project-pipeline/apache-maven-3.6.3/bin"
+        sh "export PATH=$PATH:/var/jenkins_home/workspace/testproject-pipeline/apache-maven-3.6.3/bin"
     }
     stage('Maven build') {
-        sh "apache-maven-3.6.3/bin/mvn clean package -f /var/jenkins_home/workspace/test-project-pipeline"
+        sh "apache-maven-3.6.3/bin/mvn clean package -f /var/jenkins_home/workspace/testproject-pipeline"
 	    //sh 'echo "my compilation with maven"'
     }
     /*
