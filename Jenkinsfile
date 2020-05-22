@@ -10,7 +10,7 @@ node {
         sh "apache-maven-3.6.3/bin/mvn -version"
     }
     stage('Clone sources') {
-    	git url: 'https://github.com/lorenzo-rangel/techtalks.git'
+    	//git url: 'https://github.com/lorenzo-rangel/techtalks.git'
 	print "my checkout"
 	checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[credentialsId: 'GlobantGitHub', url: 'https://github.com/lorenzo-rangel/techtalks.git']]])
     sh "ls -la"
