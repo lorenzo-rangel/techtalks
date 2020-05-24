@@ -1,4 +1,4 @@
-// COMMENT TO TEST POLL SCM 23/05/2020
+// COMMENT TO TEST POLL SCM 24/05/2020
 node {
     // Get Artifactory server instance, defined in the Artifactory Plugin administration page.
     def server = "myservername"
